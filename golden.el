@@ -28,6 +28,54 @@
 
 ;;; Code:
 
+(defgroup golden nil
+  "Dead simple package manager manipulation"
+  :group 'applications)
 
+(defcustom golden-enabled t
+  "Whether the package is enabled."
+  :type 'boolean
+  :group 'golden)
 
+(defvar golden--collecting nil
+  "Non-nil when packages are being collected.")
+
+(defvar golden--pending-packages nil
+  "List of packages collected between `golden-init` and `golden-deinit`.")
+
+(defvar golden-package-list nil
+  "List of all registered packages.")
+
+(defun golden-init ()
+  "Start collection of packages."
+  (interactive)
+  (setq golden--collecting t)
+  (setq golden--package-list nil))
+
+(defmacro g-package (pkg)
+  "Register a package while collecting."
+  `(when golden--collecting
+     (add-to-list 'golden--pending-packages ',pkg)))
+
+(defun golden-deinit ()
+  "Finish collecting and register packages."
+  (interactive)
+  (when golden--collecting
+    (setq golden-package-list
+	  (append golden--pending-packages golden-package-list))
+    (setq golden--collecting nil)
+    (message "Golden registered %d packages." (length golden--pending-packages))))
+
+(defun golden-toggle ()
+  "Toggle whether the package manager is enabled."
+  (interactive)
+  (setq golden-enabled (not golden-enabled))
+  (message "Golden package manager is %s"
+           (if golden-enabled "enabled" "disabled")))
+
+(defun golden-load ()
+  "Install all packages registered with Golden."
+  (interactive))
+
+(provide 'golden)
 ;;; golden.el ends here
