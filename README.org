@@ -19,13 +19,13 @@ Clone the repository and load it in your Emacs config:
 The plan:
 
 #+begin_src emacs-lisp
-  (golden-pkg-init)
+  (golden-init)
 
-  (g-pkg :name "foo"
-         :lazy nil // OR t (i guess?)
-         :repo "bar/foo-emacs"
-         :conf
-         (foo-mode))
+  (g-p magit)
+
+  (golden-deinit)
+
+  (golden-load)
 #+end_src
 
 ** Roadmap

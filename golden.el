@@ -52,7 +52,7 @@
   (setq golden--collecting t)
   (setq golden--package-list nil))
 
-(defmacro g-package (pkg)
+(defmacro g-p (pkg)
   "Register a package while collecting."
   `(when golden--collecting
      (add-to-list 'golden--pending-packages ',pkg)))
