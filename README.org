@@ -3,8 +3,6 @@
 #+DESCRIPTION: A minimal, elegant package manager for Emacs
 #+OPTIONS: toc:nil
 
-* emacs-golden
-
 *emacs-golden* is a lightweight, elegant package manager for Emacs, designed to provide a streamlined experience for managing Emacs packages with simplicity as the top priority.
 
 ** Installation
