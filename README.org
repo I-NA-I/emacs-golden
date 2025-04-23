@@ -1,0 +1,43 @@
+#+TITLE: emacs-golden
+#+AUTHOR: PK
+#+DESCRIPTION: A minimal, elegant package manager for Emacs
+#+OPTIONS: toc:nil
+
+* emacs-golden
+
+*emacs-golden* is a lightweight, elegant package manager for Emacs, designed to provide a streamlined experience for managing Emacs packages with simplicity as the top priority.
+
+** Installation
+
+Clone the repository and load it in your Emacs config:
+
+#+begin_src emacs-lisp
+(add-to-list 'load-path "/path/to/emacs-golden")
+(require 'golden)
+#+end_src
+
+** Usage
+
+The plan:
+
+#+begin_src emacs-lisp
+  (golden-pkg-init)
+
+  (g-pkg :name "foo"
+         :lazy nil // OR t (i guess?)
+         :repo "bar/foo-emacs"
+         :conf
+         (foo-mode))
+#+end_src
+
+** Roadmap
+- [ ] A lotta shit.
+
+** Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a PR. :D
+
+** License
+
+GNU GPL. See [[file:LICENSE][LICENSE]] for details.
+
